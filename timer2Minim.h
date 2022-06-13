@@ -5,6 +5,7 @@
 class timerMinim
 {
   public:
+    timerMinim();
     timerMinim(uint32_t interval);				// объявление таймера с указанием интервала
     void setInterval(uint32_t interval);	// установка интервала работы таймера
     boolean isReady();						// возвращает true, когда пришло время. Сбрасывается в false сам (AUTO) или вручную (MANUAL)
@@ -14,6 +15,12 @@ class timerMinim
     uint32_t _timer = 0;
     uint32_t _interval = 0;
 };
+
+timerMinim::timerMinim() {
+  _interval = 5000; // Default times
+  _timer = millis();
+}
+
 
 timerMinim::timerMinim(uint32_t interval) {
   _interval = interval;
