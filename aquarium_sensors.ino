@@ -1,9 +1,11 @@
 #include <WiFiManager.h>
 // https://github.com/tzapu/WiFiManager
+#include "as_structs.h"
 #include "temperatureSensors.h"
 #define TEMP_WIRE_BUS 4
 // -----
-TemperatureSensors tempSensor(TEMP_WIRE_BUS);
+ASTempSensor *tempSensors[];
+TemperatureSensors tempSensor(TEMP_WIRE_BUS, tempSensors);
 // ---
 
 #include "ssd1306.h"
@@ -16,6 +18,7 @@ const char *menuItems[] =
     {
         "show temperatures",
         "text examples"};
+
 
 static void textDemo()
 {

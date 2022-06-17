@@ -1,12 +1,13 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 #include "timer2Minim.h"
+#include "as_structs.h"
 #define TEMP_SENS_ERROR_VALUE -127
 
 class TemperatureSensors
 {
 public:
-  TemperatureSensors(uint8_t pin);
+  TemperatureSensors(uint8_t pin,ASTempSensor *tempSensors[]);
   void readTemperatures();
   void printAddress(DeviceAddress deviceAddress);
   float getTempC();
@@ -20,7 +21,7 @@ private:
   float _temp;
 };
 
-TemperatureSensors::TemperatureSensors(uint8_t pin)
+TemperatureSensors::TemperatureSensors(uint8_t pin, ASTempSensor *tempSensors[])
 {
   _tempSensorTimer = timerMinim(5000);
   _oneWire = OneWire(pin);

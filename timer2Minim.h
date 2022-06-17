@@ -2,6 +2,9 @@
 // использован улучшенный алгоритм таймера на millis
 // алгоритм чуть медленнее, но обеспечивает кратные интервалы и защиту от пропусков и переполнений
 
+#ifndef _TIMER_MINIM_H_
+#define _TIMER_MINIM_H_
+
 class timerMinim
 {
   public:
@@ -47,3 +50,4 @@ boolean timerMinim::isReady() {
 void timerMinim::reset() {
   _timer = millis();
 }
+#endif
